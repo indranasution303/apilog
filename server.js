@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,8 +10,8 @@ app.use(bodyParser.json());
 
 // Fungsi untuk mengirim pesan ke Telegram
 async function sendToTelegram(message) {
-  const telegramBotToken = '6835088301:AAEJc9u-d1UMMJDJq1wsLyrbYZLYwpDLaNI'; // Ganti dengan token bot Telegram Anda
-  const chatId = '-1002009915752'; // Ganti dengan chat ID Anda
+  const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID; 
   const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
 
   try {
